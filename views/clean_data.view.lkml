@@ -26,4 +26,12 @@ view: clean_data {
     type: count
     drill_fields: []
   }
+  measure: sum_of_isfraud {
+    type: sum
+    sql: ${TABLE}.isfraud;;
+  }
+  measure: ratio {
+    type: number
+    sql: ${sum_of_isfraud}/${count};;
+  }
 }
