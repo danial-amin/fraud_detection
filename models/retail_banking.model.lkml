@@ -13,3 +13,5 @@ persist_with: retail_banking_default_datagroup
 explore: clean_data {}
 
 explore: training_data {}
+
+explore: prediction {}

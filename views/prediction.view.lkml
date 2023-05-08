@@ -1,15 +1,15 @@
 view: prediction {
-  parameter: transactions_amount{type: number}
-  parameter: transaction_hour{type: number}
-  parameter: transaction_distance{type: number}
+  parameter: transactionsamount{type: number}
+  parameter: transactionhour{type: number}
+  parameter: transactiondistance{type: number}
 
 
-  derived_table: {
+derived_table: {
     sql:
-    SELECT * FROM ML.PREDICT(MODEL `retail_banking.fraud_prediction`,
-    (SELECT {% transactions_amount %} AS card_transactions_amount,
-            {% transaction_hour %} AS card_transactions_transaction_hour_of_day,
-            {% transaction_distance %} AS card_transactions_transaction_distance));;
+    SELECT * FROM ML.PREDICT(MODEL `polish-bankruptcy.retail_banking.fraud_prediction`,
+    (SELECT {% parameter transactionsamount %} AS card_transactions_amount,
+            {% parameter transactionhour %} AS card_transactions_transaction_hour_of_day,
+            {% parameter transactiondistance %} AS card_transactions_transaction_distance));;
   }
   dimension: predict_prob {
     type: number
